@@ -29,9 +29,6 @@ Merged:
 - [verify-rust-std #680](https://github.com/model-checking/verify-rust-std/pull/680): the
   autoharness analyzer reads current Kani skip reasons.
 
-[#4822](https://github.com/model-checking/kani/issues/4822) measured false regression alarms in
-Kani's benchmark CI; a maintainer opened [#4846](https://github.com/model-checking/kani/pull/4846)
-to fix them.
 
 Looking for full-time roles from January 2027:
 [LinkedIn](https://www.linkedin.com/in/srivatsan-samraj/).
