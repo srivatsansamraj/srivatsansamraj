@@ -12,7 +12,7 @@ September 2026 I have contributed to [Kani](https://github.com/model-checking/ka
 model checker for Rust. Most of the work is in autoharness, the Kani feature that generates a
 verification harness for every function in a crate.
 
-Merged, 11 in Kani and 1 in verify-rust-std as of 30 September 2026:
+Merged, 13 in Kani and 1 in verify-rust-std as of 1 October 2026:
 
 - [#4804](https://github.com/model-checking/kani/pull/4804),
   [#4806](https://github.com/model-checking/kani/pull/4806),
@@ -30,7 +30,13 @@ Merged, 11 in Kani and 1 in verify-rust-std as of 30 September 2026:
   harnesses were checking pointers to nothing.
 - [#4801](https://github.com/model-checking/kani/pull/4801): code generation for `Box` walks the
   pattern type inside `NonNull`.
+- [#4892](https://github.com/model-checking/kani/pull/4892): a pointer to a function item, or a `Box` of
+  one, keeps the value assigned to it. Kani used to replace it with a fixed expression, which
+  crashed the compiler or read a null pointer as non-null.
 - [#4861](https://github.com/model-checking/kani/pull/4861): removed `deref_box`, code that could never run.
+- [#4922](https://github.com/model-checking/kani/pull/4922): a SIMD intrinsic called on a non-vector type
+  is reported as unsupported instead of crashing the compiler. The crash stopped `core` from
+  compiling under autoharness.
 - [#4799](https://github.com/model-checking/kani/pull/4799): optional hooks are treated as optional
   in the missing-function check.
 - [verify-rust-std #680](https://github.com/model-checking/verify-rust-std/pull/680): the
