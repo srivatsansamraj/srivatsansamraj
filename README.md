@@ -12,7 +12,7 @@ September 2026 I have contributed to [Kani](https://github.com/model-checking/ka
 model checker for Rust. Most of the work is in autoharness, the Kani feature that generates a
 verification harness for every function in a crate.
 
-Merged, 13 in Kani and 3 in verify-rust-std as of 3 October 2026:
+Merged, 13 in Kani and 3 in verify-rust-std as of 5 October 2026:
 
 - [#4804](https://github.com/model-checking/kani/pull/4804),
   [#4806](https://github.com/model-checking/kani/pull/4806),
@@ -47,8 +47,21 @@ Merged, 13 in Kani and 3 in verify-rust-std as of 3 October 2026:
 - [verify-rust-std #705](https://github.com/model-checking/verify-rust-std/pull/705): the ESBMC and
   autoharness-analyzer scripts find Kani's outputs under cargo's per-package build layout.
 
+In review:
+
+- [#4934](https://github.com/model-checking/kani/pull/4934): `simd_reduce_max` and `simd_reduce_min` on integer lanes. The ARM version
+  of `is_ascii` in the current library uses them.
+- [#4972](https://github.com/model-checking/kani/pull/4972): a SIMD splat, extract, insert or shuffle instantiated with the wrong types
+  is reported as unsupported. It used to stop the whole crate from compiling.
+- [#4973](https://github.com/model-checking/kani/pull/4973), [#4974](https://github.com/model-checking/kani/pull/4974),
+  [#4975](https://github.com/model-checking/kani/pull/4975): three compiler crashes on code optimized with `-Zmir-opt-level=2`: after a
+  subslice, on an always-out-of-bounds constant index, and on an invalid `bool` constant, which is now
+  reported as undefined behavior.
+
 Reported:
 
+- [#4971](https://github.com/model-checking/kani/issues/4971): Kani proved false assertions about constant slices that start inside
+  another constant, because it read them as the whole constant.
 - [#4822](https://github.com/model-checking/kani/issues/4822): Kani's benchmark CI failed PRs for
   solver-time regressions that were only noise. I measured the noise and proposed two changes to
   the check. [#4846](https://github.com/model-checking/kani/pull/4846) built on both.
