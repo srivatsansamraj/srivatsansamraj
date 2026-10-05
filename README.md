@@ -12,7 +12,7 @@ September 2026 I have contributed to [Kani](https://github.com/model-checking/ka
 model checker for Rust. Most of the work is in autoharness, the Kani feature that generates a
 verification harness for every function in a crate.
 
-Merged, 13 in Kani and 1 in verify-rust-std as of 1 October 2026:
+Merged, 13 in Kani and 3 in verify-rust-std as of 3 October 2026:
 
 - [#4804](https://github.com/model-checking/kani/pull/4804),
   [#4806](https://github.com/model-checking/kani/pull/4806),
@@ -41,6 +41,11 @@ Merged, 13 in Kani and 1 in verify-rust-std as of 1 October 2026:
   in the missing-function check.
 - [verify-rust-std #680](https://github.com/model-checking/verify-rust-std/pull/680): the
   autoharness analyzer reads current Kani skip reasons.
+- [verify-rust-std #704](https://github.com/model-checking/verify-rust-std/pull/704): the `decimal_seq`
+  proofs pass again on the August library update. `u64::pow` now goes through a loop whose Kani
+  invariant keeps only "the result is positive", so the annotations use a table of powers of ten.
+- [verify-rust-std #705](https://github.com/model-checking/verify-rust-std/pull/705): the ESBMC and
+  autoharness-analyzer scripts find Kani's outputs under cargo's per-package build layout.
 
 Reported:
 
